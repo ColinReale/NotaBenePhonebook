@@ -1,0 +1,27 @@
+{
+  "name": "notabenephonebook",
+  "version": "1.0.0",
+  "description": "This is NotaBenePhonebook",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColinReale/NotaBenePhonebook.git"
+  },
+  "author": "Colin Reale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColinReale/NotaBenePhonebook/issues"
+  },
+  "homepage": "https://github.com/ColinReale/NotaBenePhonebook#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
