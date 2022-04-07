@@ -1,6 +1,7 @@
 const { response } = require('express')
 const express = require('express')
 const app = express()
+const morgan = require('morgan');
 // const Moment = require('moment');
 // const {}
 
@@ -29,6 +30,12 @@ let persons =
       "number": "39-23-6423122"
     }
 ]
+
+// #7 setting up morgan
+
+app.use(morgan(':method :url :status :body :res[content-length] - :response-time ms'));
+morgan.token('body', function (req, res) { return JSON.stringify(req.body)});
+
 // getting basically html from the website to the browser that a human can read
 app.get('/', (request, response) => {
     response.send('<h1>Goodbye Cruel World</h1>')
@@ -84,11 +91,17 @@ app.post("/api/persons", (request, response) => {
         return response.status(500).json({error: "Must enter a number"});
     }
     // using a math funciton native to JS that will generate a new id for the phonebook
-    body.id = (Math.random() * 521).toFixed(0);
-persons.push(body);
-return response.json(persons);
+    
+    const person = {
+        name: body.name,
+        number: body.number,
+        id: (Math.random() * 521).toFixed(0)
+    }
+persons.push(person);
+response.json(persons);
 
 });
+
 
 // listening on port 3021 (the website's "channel") for changes to the website and logging them in my console
 const PORT = 3021
